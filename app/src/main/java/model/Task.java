@@ -21,9 +21,11 @@ public class Task {
     private Date createdAt;
     private Date updatedAt;
 
+    public Task() {
+        this.createdAt = new Date();
+        
+    }
     
-    public Task(){
-  }
 
     public Task(int id, int idProject, String name, String notes, String description,
         boolean isCompleted, Date deadline, Date createdAt, Date updatedAt) {
@@ -74,18 +76,27 @@ public class Task {
     public boolean getIsCompleted() { 
         return isCompleted;
     }
-    public void setCreatAt(Date createdAt) { 
+    public void setCreatedAt(Date createdAt) { 
         this.createdAt = createdAt;
     }
-    public Date getCreateAt() { 
+    public Date getCreatedAt() { 
         return createdAt;
     }
-    public void setUpdateAt(Date updatedAt) {
+    public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
-    public Date getUpdateAt() {
+    public Date getUpdatedAt() {
         return updatedAt;
     }
+    
+    public Date getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
+    }
+
 
     @Override
     public String toString() {

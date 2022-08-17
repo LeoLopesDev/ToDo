@@ -4,7 +4,6 @@
 package ToDo;
 
 import java.sql.Connection;
-import java.util.Scanner;
 import util.ConnectionFactory;
 
 public class Main {
