@@ -4,9 +4,8 @@
 package ToDo;
 
 import java.util.Scanner;
-import model.Project;
 
-public class Main extends Project{
+public class Main {
 
     public static void main(String[] args) {
          
