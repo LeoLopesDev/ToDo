@@ -8,6 +8,6 @@ package controller;
  *
  * @author Leonardo
  */
-public class Controller {
+public class TaskController {
     
 }
