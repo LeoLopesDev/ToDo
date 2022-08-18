@@ -56,8 +56,15 @@ public class TaskController {
         PreparedStatement statement = null;
         
         try {
+            
+            //Estabelecendo a conexão com o banco de dados.
+            
             conn = ConnectionFactory.getConnection();
+            
+            //Preparando a conexão com o banco de dados
             statement = conn.prepareStatement(sql);
+            
+            //Setando os valores statement
             statement.setInt(1, task.getIdProject());
             statement.setString(2, task.getName());
             statement.setString(3, task.getDescription());
@@ -66,6 +73,9 @@ public class TaskController {
             statement.setDate(6, new Date(task.getDeadline().getTime()));
             statement.setDate(7, new Date(task.getCreatedAt().getTime()));
             statement.setDate(8, new Date(task.getUpdatedAt().getTime()));
+            statement.setInt(9, task.getId());
+            
+            // Executando a query
             statement.execute();
             
         }catch (Exception ex) {
@@ -81,10 +91,16 @@ public class TaskController {
         PreparedStatement statement = null;
         
         try {
-            
+            //Criação da conexão com o banco de dados
             conn = ConnectionFactory.getConnection();
+            
+            //Preparando a query
             statement = conn.prepareStatement(sql);
+            
+            //Setando os valores statement
             statement.setInt(1, taskId);
+            
+            //executando a query
             statement.execute();
             
         } catch (Exception e) {
@@ -103,14 +119,21 @@ public class TaskController {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         
+        //Criando a lista de taferas que será retornada
+        
         List<Task> tasks = new ArrayList<Task>();
         
         try {
             conn = ConnectionFactory.getConnection();
             statement = conn.prepareStatement(sql);
+            
+            //Setando o valor do filtro de busca
             statement.setInt(1, idProject);
+            
+            //Valor retornado pela excução da query
             resultSet = statement.executeQuery();
             
+            //Enquanto houver valores a serem percorridos no resultSet
             while(resultSet.next()) {
                 
                 Task task = new Task();
@@ -129,15 +152,13 @@ public class TaskController {
             
         }catch (Exception ex){
             
-            throw new RuntimeException("Erro ao retornar tarefas" + ex);
+            throw new RuntimeException("Erro ao inserir a tarefa" + ex.getMessage(), ex);
             
         } finally {
             ConnectionFactory.closeConnection(conn, statement, resultSet);
         }
-
+         //Lista de taferas que foi criada e carregada do banco de dados
         return tasks;
     }
-
-
 }
 
