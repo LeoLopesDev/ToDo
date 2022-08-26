@@ -22,7 +22,7 @@ public class TaskController {
     public void save(Task task){
         String sql = "INSERT INTO tasks (idProject, "
                 + "name, description, completed,"
-                + "notes, deadline, createdAt, updatedAt) VALUES (?, ?, ?, ?, ?, ? , ?, ?)";
+                + "notes, deadline, createdAt, updatedAt) VALUES (?, ?, ?, ?, ?, ? , ?, ?) ";
         
         Connection conn = null;
         PreparedStatement statement = null;

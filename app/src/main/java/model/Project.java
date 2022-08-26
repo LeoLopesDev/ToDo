@@ -55,7 +55,7 @@ public class Project {
     public int getId(){
         return id;
     }
-    public void setUpdateAt(Date updateId) {
+    public void setUpdateAt(Date updateAt) {
         this.updateAt = updateAt;
     }
     public Date getUpdateAt(){

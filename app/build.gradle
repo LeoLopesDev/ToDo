@@ -1,15 +1,25 @@
 apply plugin : 'java'
-apply plugin : 'javoco'
-apply plugni : 'application'
+apply plugin : 'jacoco'
+apply plugin : 'application'
 
-MainClass name = 'TodoApp.Main';
+application {
+
+mainClass = 'ToDo.Main'
+
+}
 
 repositories {
-    jcenter()
+   mavenCentral()
 }
 
 dependencies {
-    TestImplementation 'junit:junit:4.13'
 
-    compile group : 'mysql', name : 'mysql-connection-java', version: '5.1.13'
+// https://mvnrepository.com/artifact/mysql/mysql-connector-java
+
+    testImplementation 'junit:junit:4.13'
+
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.28'
+
 }
+
+

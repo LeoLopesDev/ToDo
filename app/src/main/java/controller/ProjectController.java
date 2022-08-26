@@ -19,11 +19,11 @@ import util.ConnectionFactory;
  */
 public class ProjectController {
     public void save(Project project) {
-        String sql = "INSERT INTO projects (name +,"
+        String sql = "INSERT INTO PROJECTS (name, "
                 + "description, "
-                + "createAt ,"
-                + "updateAt ,"
-                + "VALUES ( ?, ?, ?, ?)";
+                + "createAt, "
+                + "updateAt) "
+                + "VALUES (?, ?, ?, ?)";
         Connection conn = null;
         PreparedStatement statement = null;
         
@@ -48,11 +48,11 @@ public class ProjectController {
         
     public void update(Project project) {
       
-        String sql = "UPDATE projects SET name = ?"
-                + "description = ?"
-                + "creatAt = ?"
-                + "updateAt = ?"
-                + "WHERE id = ?";
+        String sql = "UPDATE projects SET name = ? "
+                + "description = ? "
+                + "creatAt = ? "
+                + "updateAt = ? "
+                + "WHERE id = ? ";
         
         Connection conn = null;
         PreparedStatement statement = null;
@@ -60,11 +60,12 @@ public class ProjectController {
                 try {
                     conn = ConnectionFactory.getConnection();
                     statement = conn.prepareStatement(sql);
+                    Long data = Long.valueOf(1661302595);
                     
                     statement.setString(1, project.getName());
                     statement.setString(2, project.getDescription());
-                    statement.setDate(3, new Date(project.getCreatAt().getTime()));
-                    statement.setDate(4, new Date(project.getUpdateAt().getTime()));
+                    statement.setDate(3, new Date(data));
+                    statement.setDate(4, new Date(data));
                     statement.setInt(5, project.getId());
                     statement.execute();
                    
